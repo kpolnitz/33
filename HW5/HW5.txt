@@ -1,0 +1,44 @@
+
+void transpose1 (int *dst, int *src, int dim)
+{
+//unrolling, iteration
+int i,j,temp1,temp2,temp3;temp4;
+//hold dim
+
+temp4=dim;
+temp4m = temp4 - 1;
+//fi = 0;
+//newdim = dim >> 1;
+
+for (i = 0; i < temp4; i++)
+{
+	fj = 0;
+	temp1 = i*temp4;
+
+//we can do two at a time 
+		
+	for (j = 0; j < temp4m; j+=2) {
+
+		temp2 = fj + i;
+		//will keep the temporary j for incrementing by 2
+		//so we don't have to keep accessing it
+		temp3 = (j+1)*(temp4) + i;
+		dst[temp2] = src[temp1];
+		fj = j+=temp4;
+		temp1+=2;
+		dst[temp3]=src[temp1-1];
+	}
+	temp2 = j*temp4;
+
+	for(;j < temp4;j++) 
+	{
+		temp1+=1;
+		dst[temp2 + i] = src[temp1-1];
+		temp2 += temp4;
+		   
+	}
+
+}
+
+
+}
